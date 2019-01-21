@@ -41,17 +41,17 @@ public class ItinerarySearchActivity extends AppCompatActivity {
                 if (departure.isEmpty() || destination.isEmpty() || date.isEmpty()) {
                     Toast.makeText(ItinerarySearchActivity.this, R.string.fill_all_fields, Toast.LENGTH_SHORT).show();
                 } else {
-//                    Intent intent = new Intent(ItinerarySearchActivity.this, ItineraryListActivity.class);
-                    TripModel tripModel = new TripModel(departure, destination, date);
-                    sendTripToFirebase(tripModel);
-//                    intent.putExtra(EXTRA_TRIP, tripModel);
-//                    startActivity(intent);
+                    Intent intent = new Intent(ItinerarySearchActivity.this, ItineraryListActivity.class);
+                    SearchModel searchModel = new SearchModel(departure, destination, date);
+
+                    intent.putExtra(EXTRA_TRIP, searchModel);
+                    startActivity(intent);
                 }
             }
         });
     }
 
-    private void sendTripToFirebase(final TripModel trip){
+   /* private void sendTripToFirebase(final TripModel trip){
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference reference = database.getReference("trips");
@@ -71,6 +71,6 @@ public class ItinerarySearchActivity extends AppCompatActivity {
                 Toast.makeText(ItinerarySearchActivity.this,R.string.failed_to_read_value,Toast.LENGTH_LONG).show();
             }
         });
-    }
+    }*/
 
 }
